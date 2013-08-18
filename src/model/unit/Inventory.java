@@ -44,5 +44,10 @@ public class Inventory {
 		return true;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Inventory [size=" + size + ", items=" + items + "]";
+	}
 	
 }

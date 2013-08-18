@@ -13,9 +13,9 @@ public class Unit {
 	private Inventory inventory;
 	private Level level;
 	private Unit rescue;
-	private List<Statistics> stats = new ArrayList<Statistics>();
+	private Statistics stats;
 	
-	public Unit(Builder builder) {
+	private Unit(Builder builder) {
 		
 		this.name 			= builder.name;
 		this.affinityType 	= builder.affinityType;
@@ -39,7 +39,7 @@ public class Unit {
 		private Inventory inventory;
 		private Level level;
 		private Unit rescue;
-		private List<Statistics> stats = new ArrayList<Statistics>();
+		private Statistics stats;
 		
 		public Builder(String p_name) {
 			
@@ -96,7 +96,7 @@ public class Unit {
 			
 		}
 		
-		public Builder Stats(ArrayList<Statistics> p_statistics) {
+		public Builder Stats(Statistics p_statistics) {
 			
 			this.stats = p_statistics;
 			return this;

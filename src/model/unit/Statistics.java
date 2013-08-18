@@ -1,18 +1,22 @@
 package model.unit;
 
-public enum Statistics {
+import java.util.ArrayList;
+import java.util.List;
 
-	STR,
-	MAG,
-	SKILL,
-	SPD,
-	LUCK,
-	DEF,
-	RES,
-	MOVE,
-	CON,
-	AID;
+public class Statistics {
+
+	List<Stat> statistics = new ArrayList<Stat>();
 	
-	private int growthrate;
+	public Statistics() {
+		
+		for (Stat s : Stat.values())
+			statistics.add(s);
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Statistics [statistics=" + statistics + "]";
+	}
 	
 }

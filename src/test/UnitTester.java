@@ -25,7 +25,7 @@ public class UnitTester {
 				.Inventory(new Inventory())
 				.Level(new Level())
 				.Rescue(null)
-				.Stats(new ArrayList<Statistics>())
+				.Stats(new Statistics())
 				.build();
 		
 	}

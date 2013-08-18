@@ -13,5 +13,11 @@ public class Level {
 		totalLevel = 1;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Level [experience=" + experience + ", level=" + level
+				+ ", totalLevel=" + totalLevel + "]";
+	}
 	
 }

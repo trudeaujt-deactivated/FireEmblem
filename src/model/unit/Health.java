@@ -11,5 +11,11 @@ public class Health {
 		currentHealth = p_maximumHealth;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Health [currentHealth=" + currentHealth + ", maximumHealth="
+				+ maximumHealth + "]";
+	}
 	
 }

@@ -42,7 +42,7 @@ public enum UnitClass {
 	WYVERNLORD(DamageType.PHYSICAL);
 	
 	private DamageType damageType;
-	private List<Statistics> maximumStats = new ArrayList<Statistics>();
+	private List<Stat> maximumStats = new ArrayList<Stat>();
 	private HashMap<ItemType, Rank> usableWeapons;
 
 	private UnitClass(DamageType p_damageType) {
@@ -51,7 +51,7 @@ public enum UnitClass {
 		
 	}
 	
-	private UnitClass(DamageType p_damageType, ArrayList<Statistics> p_maximumStats, HashMap<ItemType, Rank> p_usableWeapons) {
+	private UnitClass(DamageType p_damageType, ArrayList<Stat> p_maximumStats, HashMap<ItemType, Rank> p_usableWeapons) {
 		
 		//TODO find max stats for each class
 		
@@ -63,7 +63,7 @@ public enum UnitClass {
 		
 	}
 
-	public List<Statistics> getMaximumStats() {
+	public List<Stat> getMaximumStats() {
 		
 		return maximumStats;
 		
