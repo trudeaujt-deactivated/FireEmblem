@@ -10,6 +10,6 @@ public enum ItemType {
 	DARK,
 	LIGHT,
 	STAFF,
-	USABLE;
+	USABLE,
 	
 }
