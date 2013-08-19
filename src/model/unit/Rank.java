@@ -16,5 +16,11 @@ public enum Rank {
         rank = p_rank;
 
     }
+    
+    public int getRank() {
+        
+        return rank;
+        
+    }
 
 }

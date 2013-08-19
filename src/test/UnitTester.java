@@ -1,8 +1,16 @@
 package test;
 
-import java.util.ArrayList;
-
-import model.unit.*;
+import model.unit.Affinity;
+import model.unit.DamageType;
+import model.unit.Health;
+import model.unit.Inventory;
+import model.unit.ItemType;
+import model.unit.Level;
+import model.unit.Rank;
+import model.unit.Statistics;
+import model.unit.Unit;
+import model.unit.UnitClass;
+import model.unit.Weapon;
 
 public class UnitTester {
 
@@ -11,6 +19,13 @@ public class UnitTester {
         Unit lyndis = buildUnit();
 
         System.out.println(lyndis.toString());
+        
+        lyndis.incrementExperience(60);
+        lyndis.incrementExperience(60);
+        lyndis.incrementExperience(80);
+        lyndis.incrementExperience(100);
+        lyndis.incrementExperience(-1);
+        lyndis.incrementExperience(101);
 
     }
 
@@ -42,7 +57,7 @@ public class UnitTester {
                 .Aid(4)
                 .Build();
         
-        return new 
+        Unit lyndis = new
                 Unit.Builder("Lyndis")
                 .Affinity(Affinity.WIND)
                 .Class(UnitClass.LORD)
@@ -53,6 +68,11 @@ public class UnitTester {
                 .Rescue(null)
                 .Stats(statistics)
                 .Build();
+        
+        // TODO find a better way to do this
+        lyndis.getLevel().registerObserver(lyndis);
+        
+        return lyndis;
 
     }
 

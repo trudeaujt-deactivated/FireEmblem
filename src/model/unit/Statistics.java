@@ -1,8 +1,5 @@
 package model.unit;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Statistics {
 
     private DamageType damageType;

@@ -1,8 +1,6 @@
 package model.unit;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public enum UnitClass {
 

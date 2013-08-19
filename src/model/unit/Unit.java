@@ -1,9 +1,6 @@
 package model.unit;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Unit {
+public class Unit implements Observer {
 
     private String name;
     private Affinity affinityType;
@@ -110,7 +107,34 @@ public class Unit {
         }
 
     }
+    
+    public void incrementExperience(int xp) {
+        
+        assert (xp >= 0 && xp <= 100) : xp;
+        
+        level.incrementExperience(xp);
+        
+    }
 
+    public void levelUp() {
+
+        System.out.println("Levelup occured! " + name + " is now level " + level.getLevel() + " with " + level.getExperience() + " xp.");
+        
+    }
+    
+    public Level getLevel() {
+        
+        return level;
+        
+    }
+
+    @Override
+    public void update(Observable observable) {
+        
+        levelUp();
+        
+    }
+    
     @Override
     public String toString() {
 
@@ -119,10 +143,6 @@ public class Unit {
                 + ", health=" + health + ", inventory=" + inventory
                 + ", level=" + level + ", rescue=" + rescue + ", stats="
                 + stats + "]";
-    }
-
-    public void levelUp() {
-
     }
 
 }
