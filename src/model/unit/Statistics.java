@@ -126,7 +126,6 @@ public class Statistics {
         
     }
 
-
     @Override
     public String toString() {
         return "Statistics [damageType=" + damageType + ", pow=" + pow.getValue() + " " + pow.getGrowthRate()

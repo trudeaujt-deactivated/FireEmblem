@@ -2,7 +2,7 @@ package model.unit;
 
 public class Level implements Observable{
 
-    Observer observer;
+    private Observer observer;
     
     private int experience;
     private int level;
