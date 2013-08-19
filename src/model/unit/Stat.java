@@ -2,8 +2,7 @@ package model.unit;
 
 public enum Stat {
 
-    STR(0, 0),
-    MAG(0, 0),
+    POW(0, 0),
     SKILL(0, 0),
     SPD(0, 0),
     LUCK(0, 0),
@@ -21,6 +20,32 @@ public enum Stat {
         value = p_value;
         growthrate = p_growthrate;
 
+    }
+    
+    public void setValue(int p_value) {
+        
+        assert (p_value >= 0) : p_value;
+        value = p_value;
+        
+    }
+    
+    public void setGrowthRate(int p_growthrate) {
+        
+        assert (p_growthrate >= 0) : p_growthrate;
+        growthrate = p_growthrate;
+        
+    }
+    
+    public int getValue() {
+        
+        return value;
+        
+    }
+    
+    public int getGrowthRate() {
+        
+        return growthrate;
+        
     }
 
 }

@@ -13,12 +13,13 @@ public class Inventory {
     public Inventory() {
 
         size = DEFAULT_SIZE;
+        items = new ArrayList<Item>(size);
 
     }
 
     public void add(Item item) {
 
-        if (checkInventoryFull())
+        if (!checkInventoryFull())
             items.add(item);
 
     }
@@ -37,7 +38,7 @@ public class Inventory {
     }
 
     private boolean checkInventoryFull() {
-
+        
         if (items.size() < size)
             return false;
 
