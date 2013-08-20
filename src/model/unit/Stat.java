@@ -1,5 +1,7 @@
 package model.unit;
 
+import java.util.Random;
+
 public enum Stat {
 
     POW(0, 0),
@@ -14,12 +16,30 @@ public enum Stat {
 
     private int value;
     private int growthrate;
+    
+    private Random random;
 
     private Stat(int p_value, int p_growthrate) {
 
         value = p_value;
         growthrate = p_growthrate;
+        
+        random = new Random();
 
+    }
+    
+    public void incrementValue() {
+        
+        int rand = random.nextInt(100);
+        
+        if(rand < growthrate) {
+            
+            System.out.print("Stat up! " + rand + " was rolled, with a growthrate of " + growthrate + " for Stat " + this.toString() + ". Was " + value);
+            setValue(value + 1);
+            System.out.println(" and is now " + value);
+            
+        }
+        
     }
     
     public void setValue(int p_value) {

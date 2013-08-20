@@ -119,6 +119,7 @@ public class Unit implements Observer {
     private void levelUp() {
 
         System.out.println("Levelup occured! " + name + " is now level " + level.getLevel() + " with " + level.getExperience() + " xp.");
+        stats.levelUp();
         
     }
     

@@ -24,8 +24,8 @@ public class UnitTester {
         lyndis.incrementExperience(60);
         lyndis.incrementExperience(80);
         lyndis.incrementExperience(100);
-        lyndis.incrementExperience(-1);
-        lyndis.incrementExperience(101);
+        //lyndis.incrementExperience(-1);
+        //lyndis.incrementExperience(101);
 
     }
 

@@ -1,31 +1,19 @@
 package model.unit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Statistics {
 
     private DamageType damageType;
+        
+    private List<Stat> stats;
     
-    private Stat pow;
-    private Stat skill;
-    private Stat spd;
-    private Stat luck;
-    private Stat def;
-    private Stat res;
-    private Stat move;
-    private Stat con;
-    private Stat aid;
-    
-    public Statistics(Builder builder) {
+    private Statistics(Builder builder) {
 
         this.damageType     = builder.damageType;
-        this.pow            = builder.pow;
-        this.skill          = builder.skill;
-        this.spd            = builder.spd;
-        this.luck           = builder.luck;
-        this.def            = builder.def;
-        this.res            = builder.res;
-        this.move           = builder.move;
-        this.con            = builder.con;
-        this.aid            = builder.aid;
+        
+        stats = new ArrayList<Stat>(builder.stats);
 
     }
     
@@ -43,6 +31,8 @@ public class Statistics {
         private Stat con = Stat.CON;
         private Stat aid = Stat.AID;
         
+        private List<Stat> stats = new ArrayList<Stat>();
+        
         public Builder(DamageType p_damageType) {
             
             this.damageType = p_damageType;
@@ -53,6 +43,7 @@ public class Statistics {
             
             this.pow.setValue(p_value);
             this.pow.setGrowthRate(p_growthrate);
+            this.stats.add(this.pow);
             return this;
             
         }
@@ -61,6 +52,7 @@ public class Statistics {
             
             this.skill.setValue(p_value);
             this.skill.setGrowthRate(p_growthrate);
+            this.stats.add(this.skill);
             return this;
             
         }
@@ -69,6 +61,7 @@ public class Statistics {
             
             this.spd.setValue(p_value);
             this.spd.setGrowthRate(p_growthrate);
+            this.stats.add(this.spd);
             return this;
             
         }
@@ -77,6 +70,7 @@ public class Statistics {
             
             this.luck.setValue(p_value);
             this.luck.setGrowthRate(p_growthrate);
+            this.stats.add(this.luck);
             return this;
             
         }
@@ -85,6 +79,7 @@ public class Statistics {
             
             this.def.setValue(p_value);
             this.def.setGrowthRate(p_growthrate);
+            this.stats.add(this.def);
             return this;
             
         }
@@ -93,6 +88,7 @@ public class Statistics {
             
             this.res.setValue(p_value);
             this.res.setGrowthRate(p_growthrate);
+            this.stats.add(this.res);
             return this;
             
         }
@@ -100,6 +96,7 @@ public class Statistics {
         public Builder Move(int p_value) {
             
             this.move.setValue(p_value);
+            this.stats.add(this.move);
             return this;
             
         }
@@ -107,6 +104,7 @@ public class Statistics {
         public Builder Con(int p_value) {
             
             this.con.setValue(p_value);
+            this.stats.add(this.con);
             return this;
             
         }
@@ -114,6 +112,7 @@ public class Statistics {
         public Builder Aid(int p_value) {
             
             this.aid.setValue(p_value);
+            this.stats.add(this.aid);
             return this;
             
         }
@@ -126,13 +125,17 @@ public class Statistics {
         
     }
 
+    public void levelUp() {
+        
+        for(Stat s : stats)
+            s.incrementValue();
+        
+    }
+
     @Override
     public String toString() {
-        return "Statistics [damageType=" + damageType + ", pow=" + pow.getValue() + " " + pow.getGrowthRate()
-                + ", skill=" + skill.getValue() + " " + skill.getGrowthRate() + ", spd=" + spd.getValue() + " " + spd.getGrowthRate() 
-                + ", luck=" + luck.getValue() + " " + luck.getGrowthRate()
-                + ", def=" + def.getValue() + " " + def.getGrowthRate() + ", res=" + res.getValue() + " " + res.getGrowthRate() 
-                + ", move=" + move.getValue() + ", con=" + con.getValue() + ", aid=" + aid.getValue() + "]";
+        return "Statistics [damageType=" + damageType + ", stats=" + stats
+                + "]";
     }
 
 }
