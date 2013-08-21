@@ -21,6 +21,7 @@ public class Statistics {
         
         private final DamageType damageType;
         
+        private Stat hp = Stat.HP;
         private Stat pow = Stat.POW;
         private Stat skill = Stat.SKILL;
         private Stat spd = Stat.SPD;
@@ -36,6 +37,15 @@ public class Statistics {
         public Builder(DamageType p_damageType) {
             
             this.damageType = p_damageType;
+            
+        }
+        
+        public Builder Hp(int p_value, int p_growthrate) {
+            
+            this.hp.setValue(p_value);
+            this.hp.setGrowthRate(p_growthrate);
+            this.stats.add(this.hp);
+            return this;
             
         }
         
@@ -129,6 +139,18 @@ public class Statistics {
         
         for(Stat s : stats)
             s.incrementValue();
+        
+    }
+    
+    public Stat get(Stat p_stat) {
+
+        Stat temp = null;
+        
+        for(Stat s : stats)
+            if(s.name() == p_stat.name())
+                temp = s;
+        
+        return temp;
         
     }
 

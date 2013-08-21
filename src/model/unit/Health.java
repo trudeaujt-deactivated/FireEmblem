@@ -12,6 +12,30 @@ public class Health {
 
     }
 
+    public void setMaximumHealth(int p_maximumHealth) {
+        
+        assert (p_maximumHealth > 0) : p_maximumHealth;
+        
+        if(maximumHealth < 61)
+            maximumHealth = p_maximumHealth;
+        
+        if(currentHealth > maximumHealth)
+            currentHealth = maximumHealth;
+        
+    }
+    
+    public int getCurrentHealth() {
+        
+        return currentHealth;
+        
+    }
+
+    public int getMaximumHealth() {
+        
+        return maximumHealth;
+        
+    }
+    
     @Override
     public String toString() {
         return "Health [currentHealth=" + currentHealth + ", maximumHealth="

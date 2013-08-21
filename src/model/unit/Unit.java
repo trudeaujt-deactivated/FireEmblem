@@ -120,6 +120,8 @@ public class Unit implements Observer {
 
         System.out.println("Levelup occured! " + name + " is now level " + level.getLevel() + " with " + level.getExperience() + " xp.");
         stats.levelUp();
+        health.setMaximumHealth(stats.get(Stat.HP).getValue());
+        System.out.println("Max health is: " + health.getMaximumHealth());
         
     }
     

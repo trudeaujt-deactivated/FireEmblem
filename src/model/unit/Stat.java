@@ -4,6 +4,7 @@ import java.util.Random;
 
 public enum Stat {
 
+    HP(0, 0),
     POW(0, 0),
     SKILL(0, 0),
     SPD(0, 0),

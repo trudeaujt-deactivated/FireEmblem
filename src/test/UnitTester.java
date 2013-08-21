@@ -24,6 +24,10 @@ public class UnitTester {
         lyndis.incrementExperience(60);
         lyndis.incrementExperience(80);
         lyndis.incrementExperience(100);
+        lyndis.incrementExperience(100);
+        lyndis.incrementExperience(100);
+        lyndis.incrementExperience(100);
+        lyndis.incrementExperience(100);
         //lyndis.incrementExperience(-1);
         //lyndis.incrementExperience(101);
 
@@ -46,6 +50,7 @@ public class UnitTester {
         
         Statistics statistics = new 
                 Statistics.Builder(DamageType.PHYSICAL)
+                .Hp(16, 70)
                 .Power(4, 40)
                 .Skill(7, 60)
                 .Spd(9, 60)
