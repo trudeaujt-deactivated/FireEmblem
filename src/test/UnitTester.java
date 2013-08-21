@@ -78,10 +78,7 @@ public class UnitTester {
                 .Rescue(null)
                 .Stats(statistics)
                 .Build();
-        
-        // TODO find a better way to do this
-        lyndis.getLevel().registerObserver(lyndis);
-        
+                
         return lyndis;
 
     }

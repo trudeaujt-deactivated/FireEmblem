@@ -23,6 +23,8 @@ public class Unit implements Observer {
         this.level          = builder.level;
         this.rescue         = builder.rescue;
         this.stats          = builder.stats;
+        
+        this.level.registerObserver(this);
 
     }
 
