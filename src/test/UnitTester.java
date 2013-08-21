@@ -70,7 +70,7 @@ public class UnitTester {
         Unit lyndis = new
                 Unit.Builder("Lyndis")
                 .Affinity(Affinity.WIND)
-                .Class(UnitClass.LORD)
+                .Class(UnitClass.LORD_LYNDIS)
                 .Condition(null)
                 .Health(new Health(statistics.get(Stat.HP).getValue())) //brittle
                 .Inventory(inventory)
