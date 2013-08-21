@@ -2,6 +2,9 @@ package model.unit;
 
 public class Level implements Observable{
 
+    /** Maximum level a unit can reach */
+    private final int MAXIMUM_LEVEL = 20;
+    
     private Observer observer;
     
     private int experience;
@@ -20,14 +23,21 @@ public class Level implements Observable{
         
         experience += xp;
         
-        while(experience > 99 && level < 20) {
+        if(experience > 99 && level < MAXIMUM_LEVEL) {
             
             ++level;
             ++totalLevel;
             experience -= 100;
+            
+            if(checkMaximumLevel())
+                experience = 0;
+                
             notifyLevelUp();
             
         }
+        
+        else if(level == 20)
+            experience = 0;
         
     }
 
@@ -41,6 +51,12 @@ public class Level implements Observable{
     private void notifyLevelUp() {
         
         observer.update(this);
+        
+    }
+    
+    private boolean checkMaximumLevel() {
+        
+        return level == MAXIMUM_LEVEL;
         
     }
     

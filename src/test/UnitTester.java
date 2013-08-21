@@ -7,6 +7,7 @@ import model.unit.Inventory;
 import model.unit.ItemType;
 import model.unit.Level;
 import model.unit.Rank;
+import model.unit.Stat;
 import model.unit.Statistics;
 import model.unit.Unit;
 import model.unit.UnitClass;
@@ -22,14 +23,18 @@ public class UnitTester {
         
         lyndis.incrementExperience(60);
         lyndis.incrementExperience(60);
-        lyndis.incrementExperience(80);
-        lyndis.incrementExperience(100);
-        lyndis.incrementExperience(100);
-        lyndis.incrementExperience(100);
-        lyndis.incrementExperience(100);
-        lyndis.incrementExperience(100);
+        lyndis.incrementExperience(81);
+        
+        for (int i = 0; i < 20; i++) {
+            
+            lyndis.incrementExperience(100);
+            
+        }
+        
         //lyndis.incrementExperience(-1);
         //lyndis.incrementExperience(101);
+        
+        System.out.println(lyndis.toString());
 
     }
 
@@ -67,7 +72,7 @@ public class UnitTester {
                 .Affinity(Affinity.WIND)
                 .Class(UnitClass.LORD)
                 .Condition(null)
-                .Health(new Health(16))
+                .Health(new Health(statistics.get(Stat.HP).getValue())) //brittle
                 .Inventory(inventory)
                 .Level(new Level())
                 .Rescue(null)
