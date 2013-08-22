@@ -11,7 +11,7 @@ public class Statistics {
     
     private Statistics(Builder builder) {
 
-        this.damageType     = builder.damageType;
+        this.damageType = builder.damageType;
         
         stats = new ArrayList<Stat>(builder.stats);
 
@@ -156,8 +156,17 @@ public class Statistics {
 
     @Override
     public String toString() {
-        return "Statistics [damageType=" + damageType + ", stats=" + stats
-                + "]";
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(Stat s : stats) {
+            
+            sb.append(s.toString() + ": " + s.getValue() + " " + s.getGrowthRate() + " ");
+            
+        }
+        
+        return sb.toString();
+        
     }
 
 }

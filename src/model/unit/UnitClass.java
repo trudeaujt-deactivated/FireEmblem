@@ -56,12 +56,23 @@ public enum UnitClass {
 
     private UnitClass(DamageType p_damageType) {
 
+        this.damageType = p_damageType;
+        
+    }
+    
+    private UnitClass(DamageType p_damageType, Statistics p_maximumStats) {
+
+        this.damageType = p_damageType;
+        this.maximumStats.equals(p_maximumStats);
+        
     }
 
     private UnitClass(DamageType p_damageType, Statistics p_maximumStats,
             HashMap<ItemType, Rank> p_usableWeapons) {
 
-        // TODO find max stats for each class
+        this.damageType = p_damageType;
+        this.maximumStats.equals(p_maximumStats);
+        this.usableWeapons = p_usableWeapons;
 
     }
 

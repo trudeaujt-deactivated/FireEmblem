@@ -138,10 +138,9 @@ public class Unit implements Observer {
         levelUp();
         
     }
-    
+
     @Override
     public String toString() {
-
         return "Unit [name=" + name + ", affinityType=" + affinityType
                 + ", classType=" + classType + ", condition=" + condition
                 + ", health=" + health + ", inventory=" + inventory

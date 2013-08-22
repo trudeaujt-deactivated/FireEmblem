@@ -1,9 +1,13 @@
 package model.unit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Weapon implements Item {
 
     private String name;
     private ItemType type;
+    private List<UnitType> bonus;
     private int durability;
     private int range;
     private int weight;
@@ -16,6 +20,7 @@ public class Weapon implements Item {
         
         this.name           = builder.name;
         this.type           = builder.type;
+        this.bonus          = builder.bonus;
         this.durability     = builder.durability;
         this.range          = builder.range;
         this.weight         = builder.weight;
@@ -30,6 +35,7 @@ public class Weapon implements Item {
         
         private final String name;
         private ItemType type;
+        private ArrayList<UnitType> bonus;
         private int durability;
         private int range;
         private int weight;
@@ -47,6 +53,13 @@ public class Weapon implements Item {
         public Builder ItemType(ItemType p_type) {
             
             this.type = p_type;
+            return this;
+            
+        }
+        
+        public Builder Bonus(List<UnitType> p_bonus) {
+            
+            this.bonus = new ArrayList<UnitType>(p_bonus);
             return this;
             
         }
@@ -115,10 +128,10 @@ public class Weapon implements Item {
 
     @Override
     public String toString() {
-        return "Weapon [name=" + name + ", type=" + type + ", durability="
-                + durability + ", range=" + range + ", weight=" + weight
-                + ", might=" + might + ", hit=" + hit + ", crit=" + crit
-                + ", rank=" + rank + "]";
+        return "Weapon [name=" + name + ", type=" + type + ", bonus=" + bonus
+                + ", durability=" + durability + ", range=" + range
+                + ", weight=" + weight + ", might=" + might + ", hit=" + hit
+                + ", crit=" + crit + ", rank=" + rank + "]";
     }
 
 }

@@ -1,5 +1,8 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.unit.Affinity;
 import model.unit.DamageType;
 import model.unit.Health;
@@ -11,6 +14,7 @@ import model.unit.Stat;
 import model.unit.Statistics;
 import model.unit.Unit;
 import model.unit.UnitClass;
+import model.unit.UnitType;
 import model.unit.Weapon;
 
 public class UnitTester {
@@ -41,9 +45,14 @@ public class UnitTester {
     public static Unit buildUnit() {
 
         Inventory inventory = new Inventory();
+        
+        List<UnitType> bonus = new ArrayList<UnitType>();
+        bonus.add(UnitType.INFANTRY);
+        
         inventory.add(new 
                 Weapon.Builder("Mani Katti")
                 .ItemType(ItemType.SWORD)
+                .Bonus(bonus)
                 .Durability(45)
                 .Range(1)
                 .Weight(3)
@@ -66,7 +75,7 @@ public class UnitTester {
                 .Con(5)
                 .Aid(4)
                 .Build();
-        
+                
         Unit lyndis = new
                 Unit.Builder("Lyndis")
                 .Affinity(Affinity.WIND)
