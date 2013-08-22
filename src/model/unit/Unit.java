@@ -136,11 +136,27 @@ public class Unit implements Observer {
         
         Weapon currentWeapon = (Weapon) inventory.getEquippedItem();
         
+        double hit = (currentWeapon.getHit() + stats.get(Stat.SKILL).getValue() * 2 + stats.get(Stat.LUCK).getValue() * 0.5);
+        
         System.out.println("Atk: " + (stats.get(Stat.POW).getValue() + currentWeapon.getMight()));
-        System.out.println("Hit: " + (currentWeapon.getHit() + stats.get(Stat.SKILL).getValue() * 2 + stats.get(Stat.LUCK).getValue() * 0.5));
+        System.out.println("Hit: " + hit);
         System.out.println("Range: " + currentWeapon.getRange());
         System.out.println("Crit: " + (currentWeapon.getCrit() + stats.get(Stat.SKILL).getValue() * 0.5));
         System.out.println("Avoid: " + (stats.get(Stat.SPD).getValue() * 2 + stats.get(Stat.LUCK).getValue()));
+        
+        System.out.println("\nCombat window\n");
+        
+        System.out.println("HP:\t" + health.getCurrentHealth());
+        System.out.println("Atk:\t" + (stats.get(Stat.POW).getValue() + currentWeapon.getMight()));
+        System.out.println("Def:\t" + stats.get(Stat.DEF).getValue());
+        
+        int roundedHit = (int) hit;
+        if(roundedHit > 100)
+            roundedHit = 100;
+        
+        System.out.println("Hit:\t" + roundedHit);
+        System.out.println("Crit:\t" + (currentWeapon.getCrit() + stats.get(Stat.SKILL).getValue() * 0.5));
+        System.out.println("AS:\t" + stats.get(Stat.SPD).getValue());
         
     }
 

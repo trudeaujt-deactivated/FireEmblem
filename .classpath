@@ -2,5 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/Documents/Dropbox/Code/GitHub/FireEmblem/lib/lwjgl-2.9.0/jar/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="D:/Documents/Dropbox/Code/GitHub/FireEmblem/lib/slick-util/lib/slick-util.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
