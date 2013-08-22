@@ -5,81 +5,74 @@ import java.util.HashMap;
 public enum UnitClass {
 
     /** Un-promoted classes */
-    ARCHER(DamageType.PHYSICAL),
-    BANDIT(DamageType.PHYSICAL),
-    BARD(DamageType.PHYSICAL),
-    CAVALIER(DamageType.PHYSICAL),
-    CLERIC(DamageType.MAGICAL),
-    DANCER(DamageType.PHYSICAL),
-    FIGHTER(DamageType.PHYSICAL),
-    LORD_ELIWOOD(DamageType.PHYSICAL),
-    LORD_HECTOR(DamageType.PHYSICAL),
-    LORD_LYNDIS(DamageType.PHYSICAL),
-    MAGE(DamageType.MAGICAL),
-    MERCENARY(DamageType.PHYSICAL),
-    MONK(DamageType.MAGICAL),
-    MYRMIDON(DamageType.PHYSICAL),
-    NOMAD(DamageType.PHYSICAL),
-    PEGASUSKNIGHT(DamageType.PHYSICAL),
-    PIRATE(DamageType.PHYSICAL),
-    SHAMAN(DamageType.MAGICAL),
-    SOLDIER(DamageType.PHYSICAL),
-    THIEF(DamageType.PHYSICAL),
-    TROUBADOUR(DamageType.MAGICAL),
-    WYVERNRIDER(DamageType.PHYSICAL),
+    ARCHER(DamageType.PHYSICAL, UnitType.INFANTRY),
+    BANDIT(DamageType.PHYSICAL, UnitType.INFANTRY),
+    BARD(DamageType.PHYSICAL, UnitType.INFANTRY),
+    CAVALIER(DamageType.PHYSICAL, UnitType.MOUNTED),
+    CLERIC(DamageType.MAGICAL, UnitType.INFANTRY),
+    DANCER(DamageType.PHYSICAL, UnitType.INFANTRY),
+    FIGHTER(DamageType.PHYSICAL, UnitType.INFANTRY),
+    KNIGHT(DamageType.PHYSICAL, UnitType.ARMORED),
+    LORD_ELIWOOD(DamageType.PHYSICAL, UnitType.INFANTRY),
+    LORD_HECTOR(DamageType.PHYSICAL, UnitType.INFANTRY),
+    LORD_LYNDIS(DamageType.PHYSICAL, UnitType.INFANTRY),
+    MAGE(DamageType.MAGICAL, UnitType.INFANTRY),
+    MERCENARY(DamageType.PHYSICAL, UnitType.INFANTRY),
+    MONK(DamageType.MAGICAL, UnitType.INFANTRY),
+    MYRMIDON(DamageType.PHYSICAL, UnitType.INFANTRY),
+    NOMAD(DamageType.PHYSICAL, UnitType.MOUNTED),
+    PEGASUSKNIGHT(DamageType.PHYSICAL, UnitType.FLYING),
+    PIRATE(DamageType.PHYSICAL, UnitType.INFANTRY),
+    SHAMAN(DamageType.MAGICAL, UnitType.INFANTRY),
+    SOLDIER(DamageType.PHYSICAL, UnitType.INFANTRY),
+    THIEF(DamageType.PHYSICAL, UnitType.INFANTRY),
+    TROUBADOUR(DamageType.MAGICAL, UnitType.MOUNTED),
+    WYVERNRIDER(DamageType.PHYSICAL, UnitType.FLYING),
 
     /** Promoted classes */
-    ARCHSAGE(DamageType.MAGICAL),
-    ASSASSIN(DamageType.PHYSICAL),
-    BERSERKER(DamageType.PHYSICAL),
-    BISHOP(DamageType.MAGICAL),
-    BLADELORD(DamageType.PHYSICAL),
-    CORSAIR(DamageType.PHYSICAL),
-    DRUID(DamageType.MAGICAL),
-    FALCONKNIGHT(DamageType.PHYSICAL),
-    GENERAL(DamageType.PHYSICAL),
-    GREATLORD(DamageType.PHYSICAL),
-    HERO(DamageType.PHYSICAL),
-    KNIGHTLORD(DamageType.PHYSICAL),
-    NOMADTROOPER(DamageType.PHYSICAL),
-    PALADIN(DamageType.PHYSICAL),
-    SAGE(DamageType.MAGICAL),
-    SNIPER(DamageType.PHYSICAL),
-    SWORDMASTER(DamageType.PHYSICAL),
-    VALKYRIE(DamageType.MAGICAL),
-    WARRIOR(DamageType.PHYSICAL),
-    WYVERNLORD(DamageType.PHYSICAL);
+    ARCHSAGE(DamageType.MAGICAL, UnitType.INFANTRY),
+    ASSASSIN(DamageType.PHYSICAL, UnitType.INFANTRY),
+    BERSERKER(DamageType.PHYSICAL, UnitType.INFANTRY),
+    BISHOP(DamageType.MAGICAL, UnitType.INFANTRY),
+    BLADELORD(DamageType.PHYSICAL, UnitType.INFANTRY),
+    CORSAIR(DamageType.PHYSICAL, UnitType.INFANTRY),
+    DRUID(DamageType.MAGICAL, UnitType.INFANTRY),
+    FALCONKNIGHT(DamageType.PHYSICAL, UnitType.FLYING),
+    GENERAL(DamageType.PHYSICAL, UnitType.ARMORED),
+    GREATLORD(DamageType.PHYSICAL, UnitType.INFANTRY),
+    HERO(DamageType.PHYSICAL, UnitType.INFANTRY),
+    KNIGHTLORD(DamageType.PHYSICAL, UnitType.MOUNTED),
+    NOMADTROOPER(DamageType.PHYSICAL, UnitType.MOUNTED),
+    PALADIN(DamageType.PHYSICAL, UnitType.MOUNTED),
+    SAGE(DamageType.MAGICAL, UnitType.INFANTRY),
+    SNIPER(DamageType.PHYSICAL, UnitType.INFANTRY),
+    SWORDMASTER(DamageType.PHYSICAL, UnitType.INFANTRY),
+    VALKYRIE(DamageType.MAGICAL, UnitType.MOUNTED),
+    WARRIOR(DamageType.PHYSICAL, UnitType.INFANTRY),
+    WYVERNLORD(DamageType.PHYSICAL, UnitType.FLYING);
 
     private DamageType damageType;
+    private UnitType unitType;
     private Statistics maximumStats;
     private HashMap<ItemType, Rank> usableWeapons;
 
-    private UnitClass(DamageType p_damageType) {
+    private UnitClass(DamageType p_damageType, UnitType p_unitType) {
 
         this.damageType = p_damageType;
+        this.unitType = p_unitType;
         
-    }
-    
-    private UnitClass(DamageType p_damageType, Statistics p_maximumStats) {
-
-        this.damageType = p_damageType;
-        this.maximumStats.equals(p_maximumStats);
-        
-    }
-
-    private UnitClass(DamageType p_damageType, Statistics p_maximumStats,
-            HashMap<ItemType, Rank> p_usableWeapons) {
-
-        this.damageType = p_damageType;
-        this.maximumStats.equals(p_maximumStats);
-        this.usableWeapons = p_usableWeapons;
-
     }
 
     public DamageType getDamageType() {
 
         return damageType;
 
+    }
+    
+    public UnitType getUnitType() {
+        
+        return unitType;
+        
     }
 
     public Statistics getMaximumStats() {
