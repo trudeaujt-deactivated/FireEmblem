@@ -25,6 +25,8 @@ public class UnitTester {
 
         System.out.println(lyndis.toString());
         
+        lyndis.getCombatStats();
+        
         lyndis.incrementExperience(60);
         lyndis.incrementExperience(60);
         lyndis.incrementExperience(81);
@@ -35,10 +37,12 @@ public class UnitTester {
             
         }
         
+        lyndis.getCombatStats();
+        
         //lyndis.incrementExperience(-1);
         //lyndis.incrementExperience(101);
         
-        System.out.println(lyndis.toString());
+//        System.out.println(lyndis.toString());
 
     }
 
@@ -50,25 +54,25 @@ public class UnitTester {
         bonus.add(UnitType.INFANTRY);
         
         inventory.add(new 
-                Weapon.Builder("Mani Katti")
+                Weapon.Builder("Iron Sword")
                 .ItemType(ItemType.SWORD)
                 .Bonus(bonus)
                 .Durability(45)
                 .Range(1)
-                .Weight(3)
-                .Might(8)
-                .Hit(80)
-                .Crit(20)
+                .Weight(5)
+                .Might(5)
+                .Hit(90)
+                .Crit(0)
                 .Rank(Rank.E)
                 .Build());
         
         Statistics statistics = new 
                 Statistics.Builder(DamageType.PHYSICAL)
-                .Hp(16, 70)
-                .Power(4, 40)
-                .Skill(7, 60)
-                .Spd(9, 60)
-                .Luck(5, 55)
+                .Hp(17, 70)
+                .Power(5, 40)
+                .Skill(8, 60)
+                .Spd(10, 60)
+                .Luck(6, 55)
                 .Def(2, 20)
                 .Res(0, 30)
                 .Move(5)

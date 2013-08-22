@@ -131,6 +131,18 @@ public class Unit implements Observer {
         return level;
         
     }
+    
+    public void getCombatStats() {
+        
+        Weapon currentWeapon = (Weapon) inventory.getEquippedItem();
+        
+        System.out.println("Atk: " + (stats.get(Stat.POW).getValue() + currentWeapon.getMight()));
+        System.out.println("Hit: " + (currentWeapon.getHit() + stats.get(Stat.SKILL).getValue() * 2 + stats.get(Stat.LUCK).getValue() * 0.5));
+        System.out.println("Range: " + currentWeapon.getRange());
+        System.out.println("Crit: " + (currentWeapon.getCrit() + stats.get(Stat.SKILL).getValue() * 0.5));
+        System.out.println("Avoid: " + (stats.get(Stat.SPD).getValue() * 2 + stats.get(Stat.LUCK).getValue()));
+        
+    }
 
     @Override
     public void update(Observable observable) {

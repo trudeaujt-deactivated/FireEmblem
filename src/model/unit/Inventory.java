@@ -36,6 +36,12 @@ public class Inventory {
         remove(item);
 
     }
+    
+    public Item getEquippedItem() {
+        
+        return items.get(0);
+        
+    }
 
     private boolean checkInventoryFull() {
         

@@ -124,6 +124,47 @@ public class Weapon implements Item {
     @Override
     public void use() {
 
+        this.durability--;
+        //notify inventory if the weapon breaks
+        
+    }
+    
+    public boolean hasBonus(UnitType p_unitType) {
+        
+        for(UnitType u : bonus)
+            if(u.compareTo(p_unitType) == 0)
+                return true;
+        
+        return false;
+        
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public int getMight() {
+        return might;
+    }
+
+    public int getHit() {
+        return hit;
+    }
+
+    public int getCrit() {
+        return crit;
     }
 
     @Override
