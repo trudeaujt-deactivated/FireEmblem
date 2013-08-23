@@ -3,12 +3,16 @@ package model.unit;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.lang.model.type.UnknownTypeException;
+
 public class Weapon implements Item, Observable {
 
     private Observer observer;
     
     private String name;
+    private DamageType damageType;
     private ItemType type;
+    private ItemType wta;
     private List<UnitType> bonus;
     private int durability;
     private int range;
@@ -21,7 +25,9 @@ public class Weapon implements Item, Observable {
     public Weapon(Builder builder) {
         
         this.name           = builder.name;
+        this.damageType     = builder.damageType;
         this.type           = builder.type;
+        this.wta            = builder.wta;
         this.bonus          = builder.bonus;
         this.durability     = builder.durability;
         this.range          = builder.range;
@@ -36,7 +42,9 @@ public class Weapon implements Item, Observable {
     public static class Builder {
         
         private final String name;
+        private DamageType damageType;
         private ItemType type;
+        private ItemType wta;
         private ArrayList<UnitType> bonus;
         private int durability;
         private int range;
@@ -55,6 +63,19 @@ public class Weapon implements Item, Observable {
         public Builder ItemType(ItemType p_type) {
             
             this.type = p_type;
+            
+            if((this.type == ItemType.AXE) || (this.type == ItemType.BOW) || (this.type == ItemType.LANCE) || (this.type == ItemType.SWORD))
+                damageType = DamageType.PHYSICAL;
+            
+            else if((this.type == ItemType.ANIMA) || (this.type == ItemType.DARK) || (this.type == ItemType.LIGHT) || (this.type == ItemType.STAFF))
+                damageType = DamageType.PHYSICAL;
+            
+            else if((this.type == ItemType.USABLE))
+                damageType = null;
+            
+            else
+                throw new UnknownTypeException(null, p_type);
+                        
             return this;
             
         }

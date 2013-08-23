@@ -88,7 +88,7 @@ public class UnitTester {
                 .Affinity(Affinity.WIND)
                 .Class(UnitClass.LORD_LYNDIS)
                 .Condition(null)
-                .Health(new Health(statistics.getValue(Stat.HP)))
+                .Health(new Health(statistics.getValue("HP")))
                 .Inventory(inventory)
                 .Level(new Level())
                 .Rescue(null)

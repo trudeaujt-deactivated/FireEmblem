@@ -123,7 +123,7 @@ public class Unit implements Observer {
 
         System.out.println("Levelup occured! " + name + " is now level " + level.getLevel() + " with " + level.getExperience() + " xp.");
         stats.levelUp();
-        health.setMaximumHealth(stats.getValue(Stat.HP));
+        health.setMaximumHealth(stats.getValue("HP"));
         
     }
     
@@ -139,11 +139,11 @@ public class Unit implements Observer {
         
         combatStats = new 
                 CombatStats.Builder(health.getCurrentHealth())
-                .Atk(stats.getValue(Stat.POW)+ currentWeapon.getMight())
-                .Def(stats.getValue(Stat.DEF))
-                .Hit(currentWeapon.getHit() + stats.getValue(Stat.SKILL) * 2 + stats.getValue(Stat.LUCK) * 0.5)
-                .Crit(currentWeapon.getCrit() + stats.getValue(Stat.SKILL) * 0.5)
-                .AttackSpeed(stats.getValue(Stat.SPD))
+                .Atk(stats.getValue("POW")+ currentWeapon.getMight())
+                .Def(stats.getValue("DEF"))
+                .Hit(currentWeapon.getHit() + stats.getValue("SKILL") * 2 + stats.getValue("LUCK") * 0.5)
+                .Crit(currentWeapon.getCrit() + stats.getValue("SKILL") * 0.5)
+                .AttackSpeed(stats.getValue("SPD"))
                 .Build();
         
     }

@@ -21,16 +21,16 @@ public class Statistics {
         
         private final DamageType damageType;
         
-        private Stat hp = Stat.HP;
-        private Stat pow = Stat.POW;
-        private Stat skill = Stat.SKILL;
-        private Stat spd = Stat.SPD;
-        private Stat luck = Stat.LUCK;
-        private Stat def = Stat.DEF;
-        private Stat res = Stat.RES;
-        private Stat move = Stat.MOVE;
-        private Stat con = Stat.CON;
-        private Stat aid = Stat.AID;
+        private Stat hp     = new Stat("HP");
+        private Stat pow    = new Stat("POW");
+        private Stat skill  = new Stat("SKILL");
+        private Stat spd    = new Stat("SPD");
+        private Stat luck   = new Stat("LUCK");
+        private Stat def    = new Stat("DEF");
+        private Stat res    = new Stat("RES");
+        private Stat move   = new Stat("MOVE");
+        private Stat con    = new Stat("CON");
+        private Stat aid    = new Stat("AID");
         
         private List<Stat> stats = new ArrayList<Stat>();
         
@@ -142,10 +142,11 @@ public class Statistics {
         
     }
     
-    public int getValue(Stat p_stat) {
+    public int getValue(String p_stat) {
         
-        Stat s = getStat(p_stat);
-        return s.getValue();
+        Stat s = new Stat(p_stat);
+        Stat ret = getStat(s);
+        return ret.getValue();
         
     }
     
@@ -154,7 +155,7 @@ public class Statistics {
         Stat temp = null;
         
         for(Stat s : stats)
-            if(s.name() == p_stat.name())
+            if(s.getName() == p_stat.getName())
                 temp = s;
         
         return temp;
