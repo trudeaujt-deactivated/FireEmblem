@@ -11,6 +11,7 @@ public class Unit implements Observer {
     private Level level;
     private Unit rescue;
     private Statistics stats;
+    private CombatStats combatStats;
 
     private Unit(Builder builder) {
 
@@ -132,11 +133,11 @@ public class Unit implements Observer {
         
     }
     
-    public CombatStats getCombatStats() {
+    public void updateCombatStats() {
         
         Weapon currentWeapon = (Weapon) inventory.getEquippedItem();
-                
-        CombatStats cs = new 
+        
+        combatStats = new 
                 CombatStats.Builder(health.getCurrentHealth())
                 .Atk(stats.getValue(Stat.POW)+ currentWeapon.getMight())
                 .Def(stats.getValue(Stat.DEF))
@@ -145,7 +146,12 @@ public class Unit implements Observer {
                 .AttackSpeed(stats.getValue(Stat.SPD))
                 .Build();
         
-        return cs;
+    }
+    
+    public CombatStats getCombatStats() {
+        
+        updateCombatStats();
+        return combatStats;
         
     }
 

@@ -2,7 +2,7 @@ package model.unit;
 
 import java.util.ArrayList;
 
-public class Inventory {
+public class Inventory implements Observer {
 
     /** the default inventory size */
     private static final int DEFAULT_SIZE = 5;
@@ -32,14 +32,19 @@ public class Inventory {
 
     public void use(Item item) {
 
-        item.use();
-        remove(item);
+        System.out.println("Using item: " + item);
+        
+        if(item != null)
+            item.use();
 
     }
     
     public Item getEquippedItem() {
         
-        return items.get(0);
+        if(!items.isEmpty())
+            return items.get(0);
+        
+        return null;
         
     }
 
@@ -55,6 +60,14 @@ public class Inventory {
     @Override
     public String toString() {
         return "Inventory [size=" + size + ", items=" + items + "]";
+    }
+
+    @Override
+    public void update(Observable observable) {
+        
+        System.out.println("Item " + (Item) observable + " has broken.");
+        remove((Item) observable);
+        
     }
 
 }

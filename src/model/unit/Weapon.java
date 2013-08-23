@@ -3,8 +3,10 @@ package model.unit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Weapon implements Item {
+public class Weapon implements Item, Observable {
 
+    private Observer observer;
+    
     private String name;
     private ItemType type;
     private List<UnitType> bonus;
@@ -125,7 +127,9 @@ public class Weapon implements Item {
     public void use() {
 
         this.durability--;
-        //notify inventory if the weapon breaks
+        
+        if(durability == 0)
+            notifyItemBroken();
         
     }
     
@@ -173,6 +177,19 @@ public class Weapon implements Item {
                 + ", durability=" + durability + ", range=" + range
                 + ", weight=" + weight + ", might=" + might + ", hit=" + hit
                 + ", crit=" + crit + ", rank=" + rank + "]";
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        
+        this.observer = observer;
+        
+    }
+    
+    public void notifyItemBroken() {
+        
+        observer.update(this);
+        
     }
 
 }
