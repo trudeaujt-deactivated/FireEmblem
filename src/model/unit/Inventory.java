@@ -31,8 +31,6 @@ public class Inventory implements Observer {
     }
 
     public void use(Item item) {
-
-        System.out.println("Using item: " + item);
         
         if(item != null)
             item.use();
