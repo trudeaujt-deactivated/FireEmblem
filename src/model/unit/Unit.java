@@ -122,7 +122,7 @@ public class Unit implements Observer {
 
         System.out.println("Levelup occured! " + name + " is now level " + level.getLevel() + " with " + level.getExperience() + " xp.");
         stats.levelUp();
-        health.setMaximumHealth(stats.get(Stat.HP).getValue());
+        health.setMaximumHealth(stats.getValue(Stat.HP));
         
     }
     
@@ -132,31 +132,20 @@ public class Unit implements Observer {
         
     }
     
-    public void getCombatStats() {
+    public CombatStats getCombatStats() {
         
         Weapon currentWeapon = (Weapon) inventory.getEquippedItem();
+                
+        CombatStats cs = new 
+                CombatStats.Builder(health.getCurrentHealth())
+                .Atk(stats.getValue(Stat.POW)+ currentWeapon.getMight())
+                .Def(stats.getValue(Stat.DEF))
+                .Hit(currentWeapon.getHit() + stats.getValue(Stat.SKILL) * 2 + stats.getValue(Stat.LUCK) * 0.5)
+                .Crit(currentWeapon.getCrit() + stats.getValue(Stat.SKILL) * 0.5)
+                .AttackSpeed(stats.getValue(Stat.SPD))
+                .Build();
         
-        double hit = (currentWeapon.getHit() + stats.get(Stat.SKILL).getValue() * 2 + stats.get(Stat.LUCK).getValue() * 0.5);
-        
-        System.out.println("Atk: " + (stats.get(Stat.POW).getValue() + currentWeapon.getMight()));
-        System.out.println("Hit: " + hit);
-        System.out.println("Range: " + currentWeapon.getRange());
-        System.out.println("Crit: " + (currentWeapon.getCrit() + stats.get(Stat.SKILL).getValue() * 0.5));
-        System.out.println("Avoid: " + (stats.get(Stat.SPD).getValue() * 2 + stats.get(Stat.LUCK).getValue()));
-        
-        System.out.println("\nCombat window\n");
-        
-        System.out.println("HP:\t" + health.getCurrentHealth());
-        System.out.println("Atk:\t" + (stats.get(Stat.POW).getValue() + currentWeapon.getMight()));
-        System.out.println("Def:\t" + stats.get(Stat.DEF).getValue());
-        
-        int roundedHit = (int) hit;
-        if(roundedHit > 100)
-            roundedHit = 100;
-        
-        System.out.println("Hit:\t" + roundedHit);
-        System.out.println("Crit:\t" + (currentWeapon.getCrit() + stats.get(Stat.SKILL).getValue() * 0.5));
-        System.out.println("AS:\t" + stats.get(Stat.SPD).getValue());
+        return cs;
         
     }
 

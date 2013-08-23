@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.unit.Affinity;
+import model.unit.CombatStats;
 import model.unit.DamageType;
 import model.unit.Health;
 import model.unit.Inventory;
@@ -25,7 +26,8 @@ public class UnitTester {
 
         System.out.println(lyndis.toString());
         
-        lyndis.getCombatStats();
+        CombatStats cs = lyndis.getCombatStats();
+        System.out.println(cs.toString());
         
         lyndis.incrementExperience(60);
         lyndis.incrementExperience(60);
@@ -37,7 +39,8 @@ public class UnitTester {
             
         }
         
-        lyndis.getCombatStats();
+        cs = lyndis.getCombatStats();
+        System.out.println(cs.toString());
         
         //lyndis.incrementExperience(-1);
         //lyndis.incrementExperience(101);
@@ -85,7 +88,7 @@ public class UnitTester {
                 .Affinity(Affinity.WIND)
                 .Class(UnitClass.LORD_LYNDIS)
                 .Condition(null)
-                .Health(new Health(statistics.get(Stat.HP).getValue())) //brittle
+                .Health(new Health(statistics.getValue(Stat.HP)))
                 .Inventory(inventory)
                 .Level(new Level())
                 .Rescue(null)

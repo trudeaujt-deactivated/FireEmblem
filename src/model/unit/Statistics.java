@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Statistics {
-
+    
     private DamageType damageType;
         
     private List<Stat> stats;
@@ -142,7 +142,14 @@ public class Statistics {
         
     }
     
-    public Stat get(Stat p_stat) {
+    public int getValue(Stat p_stat) {
+        
+        Stat s = getStat(p_stat);
+        return s.getValue();
+        
+    }
+    
+    private Stat getStat(Stat p_stat) {
 
         Stat temp = null;
         
