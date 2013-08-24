@@ -1,5 +1,11 @@
 package model.unit;
 
+/**
+ * Defines an object to handle levels, experience, and levelups.
+ *
+ * @author Jonathan Trudeau
+ *
+ */
 public class Level implements Observable{
 
     /** Maximum level a unit can reach */
@@ -11,6 +17,9 @@ public class Level implements Observable{
     private int level;
     private int totalLevel;
 
+    /**
+     * Constructs a Level object, with zero experience and a level and totalLevel of one.
+     */
     public Level() {
         
         experience = 0;
@@ -19,6 +28,11 @@ public class Level implements Observable{
 
     }
 
+    /**
+     * Increments experience by the specified amount.
+     * 
+     * @param xp - the experience to increment by
+     */
     public void incrementExperience(int xp) {
         
         experience += xp;
@@ -48,24 +62,42 @@ public class Level implements Observable{
         
     }
 
+    /**
+     * Notifies observers that a levelup event has occured.
+     */
     private void notifyLevelUp() {
         
         observer.update(this);
         
     }
     
+    /**
+     * Checks if the current level is the maximum possible level.
+     * 
+     * @return true if the maximum level has been reached, otherwise false
+     */
     private boolean checkMaximumLevel() {
         
         return level == MAXIMUM_LEVEL;
         
     }
     
+    /**
+     * Gets the experience value as a primitive type.
+     * 
+     * @return the experience 
+     */
     public int getExperience() {
         
         return experience;
         
     }
 
+    /**
+     * Gets the current level value as a primitive type.
+     * 
+     * @return the level 
+     */
     public int getLevel() {
         
         return level;

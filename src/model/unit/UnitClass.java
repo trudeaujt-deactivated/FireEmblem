@@ -2,6 +2,12 @@ package model.unit;
 
 import java.util.HashMap;
 
+/**
+ * Defines possible Unit classes.
+ *
+ * @author Jonathan Trudeau
+ *
+ */
 public enum UnitClass {
 
     /** Un-promoted classes */
@@ -56,6 +62,12 @@ public enum UnitClass {
     private Statistics maximumStats;
     private HashMap<ItemType, Rank> usableWeapons;
 
+    /**
+     * Constructs a UnitClass object as defined.
+     * 
+     * @param p_damageType - the damage type
+     * @param p_unitType - the unit type
+     */
     private UnitClass(DamageType p_damageType, UnitType p_unitType) {
 
         this.damageType = p_damageType;
@@ -63,24 +75,44 @@ public enum UnitClass {
         
     }
 
+    /**
+     * Gets the damage type as an enumerated constant.
+     * 
+     * @return the damage type
+     */
     public DamageType getDamageType() {
 
         return damageType;
 
     }
     
+    /**
+     * Gets the unit type as an enumerated constant.
+     * 
+     * @return the unit type
+     */
     public UnitType getUnitType() {
         
         return unitType;
         
     }
 
+    /**
+     * Gets the maximum statistics as an immutable object.
+     * 
+     * @return the maximum statistics
+     */
     public Statistics getMaximumStats() {
 
         return maximumStats;
 
     }
 
+    /**
+     * Gets the usable weapons as a hash map of enumerated constants.
+     * 
+     * @return the usable weapons
+     */
     public HashMap<ItemType, Rank> getUsableWeapons() {
 
         return usableWeapons;

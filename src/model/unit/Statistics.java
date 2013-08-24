@@ -3,12 +3,23 @@ package model.unit;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Defines an object for holding unit Stats.
+ *
+ * @author Jonathan Trudeau
+ *
+ */
 public class Statistics {
     
     private DamageType damageType;
         
     private List<Stat> stats;
     
+    /**
+     * Constructs a Statistics object as defined.
+     * 
+     * @param builder - the Builder used.
+     */
     private Statistics(Builder builder) {
 
         this.damageType = builder.damageType;
@@ -17,6 +28,12 @@ public class Statistics {
 
     }
     
+    /**
+     * Defines a Builder for constructing a Statistics object.
+     *
+     * @author Jonathan Trudeau
+     *
+     */
     public static class Builder {
         
         private final DamageType damageType;
@@ -34,12 +51,25 @@ public class Statistics {
         
         private List<Stat> stats = new ArrayList<Stat>();
         
+        /**
+         * Sets the DamageType as defined.
+         * 
+         * @param p_damageType - the damage type
+         */
         public Builder(DamageType p_damageType) {
             
             this.damageType = p_damageType;
             
         }
         
+        /**
+         * Sets the HP Stat as defined.
+         * 
+         * @param p_value - the value
+         * @param p_growthrate - the growthrate
+         * 
+         * @return the Builder
+         */
         public Builder Hp(int p_value, int p_growthrate) {
             
             this.hp.setValue(p_value);
@@ -49,6 +79,14 @@ public class Statistics {
             
         }
         
+        /**
+         * Sets the Power Stat as defined.
+         * 
+         * @param p_value - the value
+         * @param p_growthrate - the growthrate
+         * 
+         * @return the Builder
+         */
         public Builder Power(int p_value, int p_growthrate) {
             
             this.pow.setValue(p_value);
@@ -58,6 +96,14 @@ public class Statistics {
             
         }
         
+        /**
+         * Sets the Skill Stat as defined.
+         * 
+         * @param p_value - the value
+         * @param p_growthrate - the growthrate
+         * 
+         * @return the Builder
+         */
         public Builder Skill(int p_value, int p_growthrate) {
             
             this.skill.setValue(p_value);
@@ -67,6 +113,14 @@ public class Statistics {
             
         }
         
+        /**
+         * Sets the Spd value as defined.
+         * 
+         * @param p_value - the value
+         * @param p_growthrate - the growthrate
+         * 
+         * @return the Builder
+         */
         public Builder Spd(int p_value, int p_growthrate) {
             
             this.spd.setValue(p_value);
@@ -76,6 +130,14 @@ public class Statistics {
             
         }
         
+        /**
+         * Sets the Luck value as defined.
+         * 
+         * @param p_value - the value
+         * @param p_growthrate - the growthrate
+         * 
+         * @return the Builder
+         */
         public Builder Luck(int p_value, int p_growthrate) {
             
             this.luck.setValue(p_value);
@@ -85,6 +147,14 @@ public class Statistics {
             
         }
         
+        /**
+         * Sets the Def value as defined.
+         * 
+         * @param p_value - the value
+         * @param p_growthrate - the growthrate
+         * 
+         * @return the Builder
+         */
         public Builder Def(int p_value, int p_growthrate) {
             
             this.def.setValue(p_value);
@@ -94,6 +164,14 @@ public class Statistics {
             
         }
         
+        /**
+         * Sets the Res value as defined.
+         * 
+         * @param p_value - the value
+         * @param p_growthrate - the growthrate
+         * 
+         * @return the Builder
+         */
         public Builder Res(int p_value, int p_growthrate) {
             
             this.res.setValue(p_value);
@@ -103,6 +181,13 @@ public class Statistics {
             
         }
         
+        /**
+         * Sets the Move value as defined.
+         * 
+         * @param p_value - the value
+         * 
+         * @return the Builder
+         */
         public Builder Move(int p_value) {
             
             this.move.setValue(p_value);
@@ -111,6 +196,13 @@ public class Statistics {
             
         }
         
+        /**
+         * Sets the Con value as defined.
+         * 
+         * @param p_value - the value
+         * 
+         * @return the Builder
+         */
         public Builder Con(int p_value) {
             
             this.con.setValue(p_value);
@@ -119,6 +211,13 @@ public class Statistics {
             
         }
         
+        /**
+         * Sets the Aid value as defined.
+         * 
+         * @param p_value - the value
+         * 
+         * @return the Builder
+         */
         public Builder Aid(int p_value) {
             
             this.aid.setValue(p_value);
@@ -127,6 +226,11 @@ public class Statistics {
             
         }
         
+        /**
+         * Constructs a Statistics object with specified parameters.
+         * 
+         * @return the constructed Statistics object
+         */
         public Statistics Build() {
 
             return new Statistics(this);
@@ -135,6 +239,9 @@ public class Statistics {
         
     }
 
+    /**
+     * Tells each Stat to increment its value.
+     */
     public void levelUp() {
         
         for(Stat s : stats)
@@ -142,6 +249,12 @@ public class Statistics {
         
     }
     
+    /**
+     * Returns the value of the specified Stat.
+     * 
+     * @param p_stat - the stat
+     * @return gets the stat value as a primitive type
+     */
     public int getValue(String p_stat) {
         
         Stat s = new Stat(p_stat);
@@ -150,6 +263,12 @@ public class Statistics {
         
     }
     
+    /**
+     * Returns the Stat matching the defined Stat.
+     * 
+     * @param p_stat - the stat to fetch
+     * @return gets the Stat as a mutable object
+     */
     private Stat getStat(Stat p_stat) {
 
         Stat temp = null;

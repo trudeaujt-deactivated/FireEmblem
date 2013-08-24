@@ -1,5 +1,11 @@
 package model.unit;
 
+/**
+ * Defines possible item types.
+ *
+ * @author Jonathan Trudeau
+ *
+ */
 public enum ItemType {
 
     AXE,
