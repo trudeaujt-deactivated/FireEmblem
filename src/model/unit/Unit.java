@@ -232,7 +232,7 @@ public class Unit implements Observer {
     /**
      * Updates the combat statistics with values from statistics and equipped items.
      */
-    public void updateCombatStats() {
+    private void updateCombatStats() {
         
         Weapon currentWeapon = (Weapon) inventory.getEquippedItem();
         
