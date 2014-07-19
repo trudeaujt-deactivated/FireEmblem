@@ -2,9 +2,9 @@ package model.unit;
 
 /**
  * Defines an object composed of various model.unit objects.
- *
+ * 
  * @author Jonathan Trudeau
- *
+ * 
  */
 public class Unit implements Observer {
 
@@ -20,12 +20,14 @@ public class Unit implements Observer {
     private CombatStats combatStats;
 
     /**
-     * Constructs a Unit object as defined.
+     * Constructs a Unit object explicitly as defined.
      * 
-     * @param builder - the Builder used.
+     * @param builder
+     *            - the Builder used.
      */
     private Unit(Builder builder) {
 
+        //@formatter:off
         this.name           = builder.name;
         this.affinityType   = builder.affinityType;
         this.classType      = builder.classType;
@@ -35,16 +37,17 @@ public class Unit implements Observer {
         this.level          = builder.level;
         this.rescue         = builder.rescue;
         this.stats          = builder.stats;
-        
+        //@formatter:on
+
         this.level.registerObserver(this);
 
     }
 
     /**
      * Defines a Builder for constructing a Unit object.
-     *
+     * 
      * @author Jonathan Trudeau
-     *
+     * 
      */
     public static class Builder {
 
@@ -61,7 +64,8 @@ public class Unit implements Observer {
         /**
          * Sets the name as defined. Required.
          * 
-         * @param p_name - the name
+         * @param p_name
+         *            - the name
          */
         public Builder(String p_name) {
 
@@ -72,7 +76,8 @@ public class Unit implements Observer {
         /**
          * Sets the affinity as defined.
          * 
-         * @param p_affinity - the affinity
+         * @param p_affinity
+         *            - the affinity
          * 
          * @return the Builder
          */
@@ -86,7 +91,8 @@ public class Unit implements Observer {
         /**
          * Sets the class type as defined.
          * 
-         * @param p_class - the class
+         * @param p_class
+         *            - the class
          * 
          * @return the Builder
          */
@@ -100,7 +106,8 @@ public class Unit implements Observer {
         /**
          * Sets the condition as defined.
          * 
-         * @param p_condition - the condition
+         * @param p_condition
+         *            - the condition
          * 
          * @return the Builder
          */
@@ -114,7 +121,8 @@ public class Unit implements Observer {
         /**
          * Sets the Health as defined.
          * 
-         * @param p_health - the health
+         * @param p_health
+         *            - the health
          * 
          * @return the Builder
          */
@@ -128,7 +136,8 @@ public class Unit implements Observer {
         /**
          * Sets the inventory as defined.
          * 
-         * @param p_inventory - the inventory
+         * @param p_inventory
+         *            - the inventory
          * 
          * @return the Builder
          */
@@ -142,7 +151,8 @@ public class Unit implements Observer {
         /**
          * Sets the level as defined.
          * 
-         * @param p_level - the level
+         * @param p_level
+         *            - the level
          * 
          * @return the Builder
          */
@@ -156,7 +166,8 @@ public class Unit implements Observer {
         /**
          * Sets the rescued unit as defined.
          * 
-         * @param p_rescue - the rescued unit
+         * @param p_rescue
+         *            - the rescued unit
          * 
          * @return the Builder
          */
@@ -170,7 +181,8 @@ public class Unit implements Observer {
         /**
          * Sets the statistics as defined.
          * 
-         * @param p_statistics - the statistics
+         * @param p_statistics
+         *            - the statistics
          * 
          * @return the Builder
          */
@@ -193,18 +205,19 @@ public class Unit implements Observer {
         }
 
     }
-    
+
     /**
      * Increments experience of the Level by the specified amount.
      * 
-     * @param xp - the experience to increment by
+     * @param xp
+     *            - the experience to increment by
      */
     public void incrementExperience(int xp) {
-        
+
         assert (xp >= 0 && xp <= 100) : xp;
-        
+
         level.incrementExperience(xp);
-        
+
     }
 
     /**
@@ -212,58 +225,59 @@ public class Unit implements Observer {
      */
     private void levelUp() {
 
-        System.out.println("Levelup occured! " + name + " is now level " + level.getLevel() + " with " + level.getExperience() + " xp.");
+        System.out.println("Levelup occured! " + name + " is now level "
+                + level.getLevel() + " with " + level.getExperience() + " xp.");
         stats.levelUp();
         health.setMaximumHealth(stats.getValue("HP"));
-        
+
     }
-    
+
     /**
      * Gets the level as a mutable object.
      * 
      * @return the level
      */
     public Level getLevel() {
-        
+
         return level;
-        
+
     }
-    
+
     /**
-     * Updates the combat statistics with values from statistics and equipped items.
+     * Updates the combat statistics with values from statistics and equipped
+     * items.
      */
     private void updateCombatStats() {
-        
+
         Weapon currentWeapon = (Weapon) inventory.getEquippedItem();
-        
-        combatStats = new 
-                CombatStats.Builder(health.getCurrentHealth())
-                .Atk(stats.getValue("POW")+ currentWeapon.getMight())
+
+        combatStats = new CombatStats.Builder(health.getCurrentHealth())
+                .Atk(stats.getValue("POW") + currentWeapon.getMight())
                 .Def(stats.getValue("DEF"))
-                .Hit(currentWeapon.getHit() + stats.getValue("SKILL") * 2 + stats.getValue("LUCK") * 0.5)
+                .Hit(currentWeapon.getHit() + stats.getValue("SKILL") * 2
+                        + stats.getValue("LUCK") * 0.5)
                 .Crit(currentWeapon.getCrit() + stats.getValue("SKILL") * 0.5)
-                .AttackSpeed(stats.getValue("SPD"))
-                .Build();
-        
+                .AttackSpeed(stats.getValue("SPD")).Build();
+
     }
-    
+
     /**
      * Gets the combat stats as a mutable object.
      * 
      * @return the combat stats
      */
     public CombatStats getCombatStats() {
-        
+
         updateCombatStats();
         return combatStats;
-        
+
     }
 
     @Override
     public void update(Observable observable) {
-        
+
         levelUp();
-        
+
     }
 
     @Override
